@@ -1,0 +1,38 @@
+{
+    "$schema": " https://developer.microsoft.com/en-us/json-schemas/teams/v1.3/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.3",
+    "version": "1.0.0",
+    "id": "ボットチャンネル登録にあるボットのAppId",
+    "packageName": "com.example.mysamplebot",
+    "developer": {
+        "name": "開発者名",
+        "websiteUrl": "https://example.com/",
+        "privacyUrl": "https://example.com/privacy",
+        "termsOfUseUrl": "https://example.com/app-tos"
+    },
+    "name": {
+        "short": "FAQbot",
+        "full": "FAQ-bot"
+    },
+    "description": {
+        "short": "サンプルのボット",
+        "full": "サンプルのボットです。"
+    },
+    "icons": {
+        "outline": "icon32x32.png",
+        "color": "icon192x192.png"
+    },
+    "accentColor": "#ff0000",
+    "bots": [
+        {
+            "botId": "ボットチャンネル登録にあるボットのAppId",
+            "needsChannelSelector": false,
+            "isNotificationOnly": false,
+            "scopes": [
+                "personal", "team", "groupchat"
+            ],
+            "supportsFiles": false,
+            "commandLists": []
+        }
+    ]
+}
