@@ -44,6 +44,10 @@ namespace MyQnABot.Bots
 
             // QnA Maker から一番マッチした質問の回答を受け取る
             var options = new QnAMakerOptions { Top = 1 };
+
+            // Teams でボットに質問すると @ボット名 が先頭につくので、それを削除
+            turnContext.Activity.RemoveRecipientMention();
+
             var response = await qnaMaker.GetAnswersAsync(turnContext, options);
 
             // 回答が存在したら応答する
