@@ -61,12 +61,11 @@ namespace MyQnABot.Bots
                         cancellationToken: cancellationToken
                     );
             }
-
         }
 
         protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
         {
-            var welcomeText = "Hello and welcome!";
+            var welcomeText = "(*ﾟ▽ﾟ* っ)З こんにちは！何でも聞いてね";
             foreach (var member in membersAdded)
             {
                 if (member.Id != turnContext.Activity.Recipient.Id)
