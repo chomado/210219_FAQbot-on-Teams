@@ -68,7 +68,7 @@ namespace MyQnABot.Bots
                     );
 
                 await turnContext.SendActivityAsync(
-                    MessageFactory.Text(text: $"`(*ﾟ▽ﾟ* っ)З` 他の質問もチェックしてね: {response[0].Source}")
+                    MessageFactory.Text(text: $"`(*ﾟ▽ﾟ* っ)З` 他の質問もチェックしてね: [よく寄せられる質問 - Microsoft]({response[0].Source})")
                 );
             }
             else
