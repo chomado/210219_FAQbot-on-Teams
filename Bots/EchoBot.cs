@@ -48,6 +48,11 @@ namespace MyQnABot.Bots
             // Teams でボットに質問すると @ボット名 が先頭につくので、それを削除
             turnContext.Activity.RemoveRecipientMention();
 
+            // デバッグ用にオウム返し
+            await turnContext.SendActivityAsync(
+                MessageFactory.Text(text: $"(*ﾟ▽ﾟ* っ)З 質問は『{turnContext.Activity.Text}』だね！")
+            );
+
             var response = await qnaMaker.GetAnswersAsync(turnContext, options);
 
             // 回答が存在したら応答する
