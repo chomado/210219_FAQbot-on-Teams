@@ -49,9 +49,9 @@ namespace MyQnABot.Bots
             turnContext.Activity.RemoveRecipientMention();
 
             // デバッグ用にオウム返し
-            await turnContext.SendActivityAsync(
-                MessageFactory.Text(text: $"(*ﾟ▽ﾟ* っ)З 質問は『{turnContext.Activity.Text}』だね！")
-            );
+            /* await turnContext.SendActivityAsync(
+                MessageFactory.Text(text: $"`(*ﾟ▽ﾟ* っ)З` 質問は『{turnContext.Activity.Text}』だね！")
+            ); */
 
             var response = await qnaMaker.GetAnswersAsync(turnContext, options);
 
@@ -59,9 +59,17 @@ namespace MyQnABot.Bots
             if (response != null && response.Length > 0)
             {
                 await turnContext.SendActivityAsync(
+                    MessageFactory.Text(text: $"`(*ﾟ▽ﾟ* っ)З` これが聞きたいのかな？『{response[0].Questions[0]}』")
+                );
+
+                await turnContext.SendActivityAsync(
                         activity: MessageFactory.Text(response[0].Answer),
                         cancellationToken: cancellationToken
                     );
+
+                await turnContext.SendActivityAsync(
+                    MessageFactory.Text(text: $"`(*ﾟ▽ﾟ* っ)З` 他の質問もチェックしてね: {response[0].Source}")
+                );
             }
             else
             {
@@ -74,7 +82,7 @@ namespace MyQnABot.Bots
 
         protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
         {
-            var welcomeText = "(*ﾟ▽ﾟ* っ)З こんにちは！何でも聞いてね";
+            var welcomeText = "`(*ﾟ▽ﾟ* っ)З` こんにちは！ Windows や Office のこと、何でも聞いてね";
             foreach (var member in membersAdded)
             {
                 if (member.Id != turnContext.Activity.Recipient.Id)
